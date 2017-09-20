@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zopa.LoanCalculator.Client", "LoanCalculator\Zopa.LoanCalculator.Client.csproj", "{08457B1F-A381-4533-A33A-745863B9C20D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zopa.LoanCalculator.Core", "Zopa.LoanCalculator.Core\Zopa.LoanCalculator.Core.csproj", "{7E049A89-F311-4450-9548-BAEE7A97053F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zopa.LoanCalculator.Test", "Zopa.LoanCalculator.Test\Zopa.LoanCalculator.Test.csproj", "{1A538D16-CE5E-418F-AB13-60204D3E00F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08457B1F-A381-4533-A33A-745863B9C20D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08457B1F-A381-4533-A33A-745863B9C20D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08457B1F-A381-4533-A33A-745863B9C20D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08457B1F-A381-4533-A33A-745863B9C20D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E049A89-F311-4450-9548-BAEE7A97053F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E049A89-F311-4450-9548-BAEE7A97053F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E049A89-F311-4450-9548-BAEE7A97053F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E049A89-F311-4450-9548-BAEE7A97053F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A538D16-CE5E-418F-AB13-60204D3E00F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A538D16-CE5E-418F-AB13-60204D3E00F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A538D16-CE5E-418F-AB13-60204D3E00F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A538D16-CE5E-418F-AB13-60204D3E00F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
