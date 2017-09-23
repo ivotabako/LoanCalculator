@@ -1,13 +1,10 @@
-﻿using log4net;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Zopa.LoanCalculator.Core;
-
-[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace Zopa.LoanCalculator.Client
 {
@@ -17,14 +14,23 @@ namespace Zopa.LoanCalculator.Client
        
         static void Main(string[] args)
         {
-            LendersManager csvLoader = new LendersManager(File);
+            var fileReader = new FileReader();
 
-            var lenders = csvLoader.Load(args[0]);
+            var inputIsValid = new InputValidator(fileReader).IsInputValid(args);
 
-            Core.LendersManager manager = new Core.LendersManager(lenders);
-            var quote = manager.GetBestQuote(decimal.Parse( args[1]), 36);
+            if (!inputIsValid)
+            {
+                Console.WriteLine("Then filename or the loan amount are wrong!");
+                Console.WriteLine("Please press a button to exit");
+                Console.ReadLine();
+                Environment.Exit(1);
+            }
 
+            LendersManager csvLoader = new LendersManager(fileReader, new Calculator(), args[0]);
+            
+            var quote = csvLoader.GetBestQuote(decimal.Parse( args[1]), 36);
 
+            quote.Print(Console.Write);
 
         }
     }

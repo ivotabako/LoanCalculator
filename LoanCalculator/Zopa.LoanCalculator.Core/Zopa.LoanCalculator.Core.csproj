@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculator.cs" />
+    <Compile Include="FileReader.cs" />
+    <Compile Include="ICalculator.cs" />
+    <Compile Include="IFileReader.cs" />
+    <Compile Include="InputValidator.cs" />
     <Compile Include="Lender.cs" />
     <Compile Include="LendersManager.cs" />
     <Compile Include="LoanOffer.cs" />
