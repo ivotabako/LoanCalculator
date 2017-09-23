@@ -14,15 +14,14 @@ namespace Zopa.LoanCalculator.Client
     
     public class Program
     {
-        private static readonly ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-   
+       
         static void Main(string[] args)
         {
-            DataLoader csvLoader = new DataLoader(log);
+            LendersManager csvLoader = new LendersManager(File);
 
-            var lenders = csvLoader.LoadFromCSV(args[0]);
+            var lenders = csvLoader.Load(args[0]);
 
-            LendersManager manager = new LendersManager(lenders);
+            Core.LendersManager manager = new Core.LendersManager(lenders);
             var quote = manager.GetBestQuote(decimal.Parse( args[1]), 36);
 
 
