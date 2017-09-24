@@ -69,7 +69,10 @@ namespace Zopa.LoanCalculator.Test
 
             //Act
             var result = inputValidator.IsInputValid(new[] { "test.csv", "abc" });
+            Assert.AreEqual(false, result);
 
+            //Act
+            result = inputValidator.IsInputValid(new[] { "test.csv", "2000.0" });
             Assert.AreEqual(false, result);
         }
 

@@ -53,7 +53,7 @@ namespace Zopa.LoanCalculator.Core
         {
             if (_hasError)
             {
-                return LoanOffer.SetError(_errorMessage);
+                return new LoanOffer(_errorMessage);
             }
 
             Lender bestLender = _lenders.Where(m => m.AvailableAmount >= loanAmount).OrderBy(m => m.Rate).FirstOrDefault();     
@@ -63,7 +63,7 @@ namespace Zopa.LoanCalculator.Core
                 return new LoanOffer(loanAmount, bestLender.Rate, monthlypayment, loanTerm);
             }
 
-            return new LoanOffer(0,0,0,0);
+            return new LoanOffer("It is not possible to provide a quote at this time!");
         }
 
     }

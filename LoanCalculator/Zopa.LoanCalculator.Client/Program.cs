@@ -32,9 +32,9 @@ namespace Zopa.LoanCalculator.Client
             var fileName = args[0];
             int loanAmount = int.Parse( args[1]);
 
-            LendersManager csvLoader = new LendersManager(fileReader, new Calculator(), fileName);
+            LendersManager lendersMgr = new LendersManager(fileReader, new Calculator(), fileName);
             
-            var quote = csvLoader.GetBestQuote(loanAmount, loanTerm, numberOfPaymentsPerYear);
+            var quote = lendersMgr.GetBestQuote(loanAmount, loanTerm, numberOfPaymentsPerYear);
 
             quote.Print(Console.Write);
 
