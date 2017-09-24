@@ -6,15 +6,15 @@ namespace Zopa.LoanCalculator.Core
     public class LoanOffer
     {
         public int LoanTerm { get; }
-        public decimal LoanAmount { get; }
-        public decimal RateInPercent { get; }
+        public double LoanAmount { get; }
+        public double RateInPercent { get; }
         public double MonthlyRepayment { get; }
         public double TotalRepayment { get; }
 
         private static bool _hasError;
         public static string ErrorMessage { get; private set; }
 
-        public LoanOffer(decimal loanAmount, decimal rateInPercent, double monthlyRepayment, int loanTerm)
+        public LoanOffer(double loanAmount, double rateInPercent, double monthlyRepayment, int loanTerm)
         {
             LoanAmount = loanAmount;
             RateInPercent = rateInPercent;
@@ -25,7 +25,7 @@ namespace Zopa.LoanCalculator.Core
 
         public bool IsEmpty()
         {
-            ErrorMessage = "It is not possible to provide a quote at that time!";
+            ErrorMessage = "It is not possible to provide a quote at this time!";
             return RateInPercent == 0 && MonthlyRepayment == 0;
         }
 
@@ -53,7 +53,6 @@ namespace Zopa.LoanCalculator.Core
             sb.AppendLine(TotalRepayment.ToString());
 
             return sb.ToString();
-
         }
 
         internal static LoanOffer SetError(string _errorMessage)

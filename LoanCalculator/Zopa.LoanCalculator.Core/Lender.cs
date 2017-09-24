@@ -9,7 +9,7 @@ namespace Zopa.LoanCalculator.Core
     public class Lender
     {
         public string Name { get; set; }
-        public decimal Rate { get; set; }
-        public decimal AvailableAmount { get; set; }
+        public double Rate { get; set; }
+        public double AvailableAmount { get; set; }
     }
 }

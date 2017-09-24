@@ -30,7 +30,7 @@ namespace Zopa.LoanCalculator.Client
             }
 
             var fileName = args[0];
-            decimal loanAmount = decimal.Parse( args[1]);
+            double loanAmount = Double.Parse( args[1]);
 
             LendersManager csvLoader = new LendersManager(fileReader, new Calculator(), fileName);
             

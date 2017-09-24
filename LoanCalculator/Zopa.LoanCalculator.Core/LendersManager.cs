@@ -34,8 +34,8 @@ namespace Zopa.LoanCalculator.Core
                     lenders.Add(new Lender()
                     {
                         Name = fielnds[0],
-                        Rate = Decimal.Parse(fielnds[1]),
-                        AvailableAmount = Decimal.Parse(fielnds[2])
+                        Rate = Double.Parse(fielnds[1]),
+                        AvailableAmount = Double.Parse(fielnds[2])
                     });
                 });
             }
@@ -49,7 +49,7 @@ namespace Zopa.LoanCalculator.Core
             return lenders;
         }
 
-        public LoanOffer GetBestQuote(decimal loanAmount, int loanTerm, int numberOfPaymentsPerYear)
+        public LoanOffer GetBestQuote(double loanAmount, int loanTerm, int numberOfPaymentsPerYear)
         {
             if (_hasError)
             {
@@ -59,8 +59,8 @@ namespace Zopa.LoanCalculator.Core
             Lender bestLender = _lenders.Where(m => m.AvailableAmount >= loanAmount).OrderBy(m => m.Rate).FirstOrDefault();     
             if(bestLender != null)
             {
-                var monthlyRepayment = _calculator.GetAPYMonthlyRepayment((double)loanAmount, (double)bestLender.Rate, loanTerm, numberOfPaymentsPerYear);
-                return new LoanOffer(loanAmount, bestLender.Rate, monthlyRepayment, loanTerm);
+                var monthlypayment = _calculator.GetMonthlyPayment(loanAmount, bestLender.Rate, loanTerm, numberOfPaymentsPerYear);
+                return new LoanOffer(loanAmount, bestLender.Rate, monthlypayment, loanTerm);
             }
 
             return new LoanOffer(0,0,0, 0);
