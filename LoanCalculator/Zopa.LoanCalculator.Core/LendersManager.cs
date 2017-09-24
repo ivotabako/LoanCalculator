@@ -60,10 +60,10 @@ namespace Zopa.LoanCalculator.Core
             if(bestLender != null)
             {
                 var monthlyRepayment = _calculator.GetAPYMonthlyRepayment(loanAmount, bestLender.Rate, loanTerm);
-                return new LoanOffer(bestLender.Rate, monthlyRepayment);
+                return new LoanOffer(loanAmount, bestLender.Rate, monthlyRepayment, loanTerm);
             }
 
-            return new LoanOffer(0,0);
+            return new LoanOffer(0,0,0, 0);
         }
 
     }

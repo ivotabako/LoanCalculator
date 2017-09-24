@@ -14,6 +14,8 @@ namespace Zopa.LoanCalculator.Client
        
         static void Main(string[] args)
         {
+            int loanTerm = 36;
+
             var fileReader = new FileReader();
 
             var inputIsValid = new InputValidator(fileReader).IsInputValid(args);
@@ -28,9 +30,11 @@ namespace Zopa.LoanCalculator.Client
 
             LendersManager csvLoader = new LendersManager(fileReader, new Calculator(), args[0]);
             
-            var quote = csvLoader.GetBestQuote(decimal.Parse( args[1]), 36);
+            var quote = csvLoader.GetBestQuote(decimal.Parse( args[1]), loanTerm);
 
             quote.Print(Console.Write);
+
+            Console.ReadLine();
 
         }
     }
