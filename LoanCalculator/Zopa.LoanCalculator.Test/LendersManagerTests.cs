@@ -73,7 +73,7 @@ Angela,0.069,600";
             var result = lendersMgr.GetBestQuote(loanAmount, loanTerm, numberOfPaymentsPerYear);
 
             //Assert
-            Assert.AreEqual("Input string was not in a correct format.", result.ErrorMessage);
+            Assert.AreEqual("Error in the lenders file or the requested loan amount: \n\r Input string was not in a correct format.", result.ErrorMessage);
             Assert.AreEqual(true, result.HasError);
             
         }
@@ -133,7 +133,7 @@ Angela,0.069,600";
             var result = lendersMgr.GetBestQuote(loanAmount, loanTerm, numberOfPaymentsPerYear);
 
             //Assert
-            Assert.AreEqual("Input string was not in a correct format.", result.ErrorMessage);
+            Assert.AreEqual("Error in the lenders file or the requested loan amount: \n\r Input string was not in a correct format.", result.ErrorMessage);
             Assert.AreEqual(true, result.HasError);
 
         }
@@ -163,7 +163,7 @@ Angela,0.069,600";
             var result = lendersMgr.GetBestQuote(loanAmount, loanTerm, numberOfPaymentsPerYear);
 
             //Assert
-            Assert.AreEqual("Index was outside the bounds of the array.", result.ErrorMessage);
+            Assert.AreEqual("Error in the lenders file or the requested loan amount: \n\r Index was outside the bounds of the array.", result.ErrorMessage);
             Assert.AreEqual(true, result.HasError);
 
         }
@@ -193,7 +193,7 @@ Angela,0.069,600";
             var result = lendersMgr.GetBestQuote(loanAmount, loanTerm, numberOfPaymentsPerYear);
 
             //Assert
-            Assert.AreEqual("It is not possible to provide a quote at this time!", result.ErrorMessage);
+            Assert.AreEqual("Error in the lenders file or the requested loan amount: \n\r It is not possible to provide a quote at this time!", result.ErrorMessage);
             Assert.AreEqual(true, result.HasError);
 
         }
