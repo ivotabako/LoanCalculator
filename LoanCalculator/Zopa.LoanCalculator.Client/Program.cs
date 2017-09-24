@@ -10,8 +10,7 @@ namespace Zopa.LoanCalculator.Client
 {
     
     public class Program
-    {
-       
+    {       
         static void Main(string[] args)
         {
             int loanTerm = 36;
@@ -23,14 +22,15 @@ namespace Zopa.LoanCalculator.Client
 
             if (!inputIsValid)
             {
-                Console.WriteLine("The provided filename or the loan amount are wrong!");
+                Console.WriteLine("The provided filename or the loan amount is invalid!");
+                Console.WriteLine("Ex.: cmd> quote.exe [market_file] [loan_amount]");
                 Console.WriteLine("Please press a button to exit");
                 Console.ReadLine();
                 Environment.Exit(1);
             }
 
             var fileName = args[0];
-            double loanAmount = Double.Parse( args[1]);
+            int loanAmount = int.Parse( args[1]);
 
             LendersManager csvLoader = new LendersManager(fileReader, new Calculator(), fileName);
             

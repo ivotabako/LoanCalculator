@@ -49,7 +49,7 @@ namespace Zopa.LoanCalculator.Core
             return lenders;
         }
 
-        public LoanOffer GetBestQuote(double loanAmount, int loanTerm, int numberOfPaymentsPerYear)
+        public LoanOffer GetBestQuote(int loanAmount, int loanTerm, int numberOfPaymentsPerYear)
         {
             if (_hasError)
             {
@@ -63,7 +63,7 @@ namespace Zopa.LoanCalculator.Core
                 return new LoanOffer(loanAmount, bestLender.Rate, monthlypayment, loanTerm);
             }
 
-            return new LoanOffer(0,0,0, 0);
+            return new LoanOffer(0,0,0,0);
         }
 
     }

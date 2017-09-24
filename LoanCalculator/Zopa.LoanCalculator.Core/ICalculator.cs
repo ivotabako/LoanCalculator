@@ -2,6 +2,6 @@
 {
     public interface ICalculator
     {
-        double GetMonthlyPayment(double requestedAmount, double interestRateInPercent, int loanTerm, int numberOfPaymentsPerYear);
+        double GetMonthlyPayment(int requestedAmount, double interestRateInPercent, int loanTerm, int numberOfPaymentsPerYear);
     }
 }

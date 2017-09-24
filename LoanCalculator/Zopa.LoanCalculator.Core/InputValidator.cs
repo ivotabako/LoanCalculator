@@ -14,14 +14,18 @@ namespace Zopa.LoanCalculator.Core
 
         public bool IsInputValid(string[] arguments)
         {
-            return DoesFileExists(arguments[0]) && IsLoanAmountProvided(arguments[1]);
-
+            return arguments.Length == 2 && DoesFileExists(arguments[0]) && IsLoanAmountValid(arguments[1]);
         }
 
-        private bool IsLoanAmountProvided(string loanAmount)
+        private bool IsLoanAmountValid(string loanAmount)
         {
-            decimal dummy;
-            return decimal.TryParse(loanAmount, out dummy);
+            int dummy;
+            return int.TryParse(loanAmount, out dummy) && LoanIsInRange(dummy);
+        }
+
+        private bool LoanIsInRange(int loan)
+        {
+            return 1000 <= loan && loan <= 15000 && loan % 100 == 0;
         }
 
         private bool DoesFileExists(string fileName)

@@ -5,6 +5,7 @@ namespace Zopa.LoanCalculator.Core
 {
     public class LoanOffer
     {
+        public string Currency { get; }
         public int LoanTerm { get; }
         public double LoanAmount { get; }
         public double RateInPercent { get; }
@@ -14,19 +15,22 @@ namespace Zopa.LoanCalculator.Core
         private static bool _hasError;
         public static string ErrorMessage { get; private set; }
 
-        public LoanOffer(double loanAmount, double rateInPercent, double monthlyRepayment, int loanTerm)
+        public LoanOffer(double loanAmount, double rateInPercent, double monthlyRepayment, int loanTerm, string currency = "£")
         {
             LoanAmount = loanAmount;
             RateInPercent = rateInPercent;
             MonthlyRepayment = monthlyRepayment;
             TotalRepayment = loanTerm * MonthlyRepayment;
             LoanTerm = loanTerm;
+            Currency = currency;
         }
 
-        public bool IsEmpty()
+        private bool IsEmpty()
         {
-            ErrorMessage = "It is not possible to provide a quote at this time!";
-            return RateInPercent == 0 && MonthlyRepayment == 0;
+            var isEmpty = RateInPercent == 0 && MonthlyRepayment == 0;
+            if (isEmpty)
+                ErrorMessage = "It is not possible to provide a quote at this time!";
+            return isEmpty;
         }
 
         public void Print(Action<string, object> write)
@@ -42,20 +46,18 @@ namespace Zopa.LoanCalculator.Core
         private string GetValidOutput()
         {
             var sb = new StringBuilder();
-            sb.Append("Requested amount: £");
-            sb.AppendLine(LoanAmount.ToString());
-            sb.Append("Rate: ");
-            sb.Append(RateInPercent.ToString());
-            sb.AppendLine("%");
-            sb.Append("Monthly repayment: £");
-            sb.AppendLine(MonthlyRepayment.ToString());
-            sb.Append("Total repayment: £");
-            sb.AppendLine(TotalRepayment.ToString());
+            sb.AppendFormat("Requested amount: {0}{1}", Currency, LoanAmount);
+            sb.AppendLine();
+            sb.AppendFormat("Rate: {0:N1}%", RateInPercent * 100);
+            sb.AppendLine();                      
+            sb.AppendFormat("Monthly repayment: {0}{1:N2}", Currency, MonthlyRepayment);
+            sb.AppendLine();            
+            sb.AppendFormat("Total repayment: {0}{1:N2}", Currency,TotalRepayment);
 
             return sb.ToString();
         }
 
-        internal static LoanOffer SetError(string _errorMessage)
+        public static LoanOffer SetError(string _errorMessage)
         {
             _hasError = true;
             ErrorMessage = _errorMessage;

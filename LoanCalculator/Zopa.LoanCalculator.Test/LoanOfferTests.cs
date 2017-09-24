@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Zopa.LoanCalculator.Test
 {
     [TestClass]
-    public class UnitTest1
+    public class LoanOfferTests
     {
         [TestMethod]
         public void TestMethod1()

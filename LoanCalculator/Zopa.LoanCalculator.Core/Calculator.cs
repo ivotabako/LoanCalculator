@@ -12,7 +12,7 @@ namespace Zopa.LoanCalculator.Core
         /// <summary>
         /// Gets the monthly payments amount using annual percentage yield formula 
         /// </summary>
-        public double GetMonthlyPayment(double requestedAmount, double interestRateInPercent, int loanTerm, int numberOfPaymentsPerYear)
+        public double GetMonthlyPayment(int requestedAmount, double interestRateInPercent, int loanTerm, int numberOfPaymentsPerYear)
         {
             var nominalAnnuealInterestRate = (Math.Pow(1.0 + interestRateInPercent, 1.0 / numberOfPaymentsPerYear) - 1.0) * numberOfPaymentsPerYear;
 
