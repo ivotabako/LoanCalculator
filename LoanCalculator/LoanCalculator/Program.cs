@@ -22,7 +22,7 @@ namespace Zopa.LoanCalculator.Client
 
             if (!inputIsValid)
             {
-                Console.WriteLine("Then filename or the loan amount are wrong!");
+                Console.WriteLine("The provided filename or the loan amount are wrong!");
                 Console.WriteLine("Please press a button to exit");
                 Console.ReadLine();
                 Environment.Exit(1);

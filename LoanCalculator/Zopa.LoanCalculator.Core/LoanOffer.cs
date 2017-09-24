@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Zopa.LoanCalculator.Core
 {
@@ -24,31 +25,35 @@ namespace Zopa.LoanCalculator.Core
 
         public bool IsEmpty()
         {
+            ErrorMessage = "It is not possible to provide a quote at that time!";
             return RateInPercent == 0 && MonthlyRepayment == 0;
         }
 
         public void Print(Action<string, object> write)
+        {            
+            if (_hasError || IsEmpty())
+            {
+                write(ErrorMessage, null);
+            }
+            
+            write(GetValidOutput(), null);
+        }
+
+        private string GetValidOutput()
         {
-            if (_hasError)
-            {
+            var sb = new StringBuilder();
+            sb.Append("Requested amount: £");
+            sb.AppendLine(LoanAmount.ToString());
+            sb.Append("Rate: ");
+            sb.Append(RateInPercent.ToString());
+            sb.AppendLine("%");
+            sb.Append("Monthly repayment: £");
+            sb.AppendLine(MonthlyRepayment.ToString());
+            sb.Append("Total repayment: £");
+            sb.AppendLine(TotalRepayment.ToString());
 
-            }
+            return sb.ToString();
 
-            if (IsEmpty())
-            {
-
-            }
-
-            string output =
-@"Requested amount: £{0}
-
-Rate: {1} %
-    
-Monthly repayment: £{2}
-
-Total repayment: £{3}
-";
-            write(string.Format( output, LoanAmount, RateInPercent, MonthlyRepayment, TotalRepayment), null);
         }
 
         internal static LoanOffer SetError(string _errorMessage)

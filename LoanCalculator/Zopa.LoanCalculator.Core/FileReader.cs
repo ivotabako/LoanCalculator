@@ -5,7 +5,7 @@ using System.IO;
 namespace Zopa.LoanCalculator.Core
 {
     /// <summary>
-    /// Wrapper around File class and its ReadLines method
+    /// Wrapper around File class and its ReadLines and Exists methods
     /// </summary>
     public class FileReader : IFileReader
     {

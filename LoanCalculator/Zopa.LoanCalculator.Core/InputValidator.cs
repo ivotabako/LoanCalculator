@@ -12,9 +12,9 @@ namespace Zopa.LoanCalculator.Core
             _fileReader = fileReader;
         }
 
-        public bool IsInputValid(string[] args)
+        public bool IsInputValid(string[] arguments)
         {
-            return DoesFileExists(args[0]) && IsLoanAmountProvided(args[1]);
+            return DoesFileExists(arguments[0]) && IsLoanAmountProvided(arguments[1]);
 
         }
 
