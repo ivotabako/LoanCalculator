@@ -28,17 +28,19 @@ namespace Zopa.LoanCalculator.Core
         public LoanOffer(string _errorMessage)
         {
             HasError = true;
-            ErrorMessage = _errorMessage;
+            ErrorMessage = string.Format("Error in the lenders file or the requested loan amount: \n\r {0}", _errorMessage);
         }       
 
-        public void Print(Action<string, object> write)
+        public void Print(Action<string, object> writer)
         {            
             if (HasError)
             {
-                write(ErrorMessage, null);
+                writer(ErrorMessage, null);
             }
-            
-            write(GetValidOutput(), null);
+            else
+            {
+                writer(GetValidOutput(), null);
+            }            
         }
 
         private string GetValidOutput()
