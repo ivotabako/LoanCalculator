@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zopa.LoanCalculator.Client", "LoanCalculator\Zopa.LoanCalculator.Client.csproj", "{08457B1F-A381-4533-A33A-745863B9C20D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zopa.LoanCalculator.Client", "Zopa.LoanCalculator.Client\Zopa.LoanCalculator.Client.csproj", "{08457B1F-A381-4533-A33A-745863B9C20D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zopa.LoanCalculator.Core", "Zopa.LoanCalculator.Core\Zopa.LoanCalculator.Core.csproj", "{7E049A89-F311-4450-9548-BAEE7A97053F}"
 EndProject
